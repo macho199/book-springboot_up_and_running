@@ -1,0 +1,29 @@
+GET http://127.0.0.1:8080/coffees
+
+###
+
+POST http://127.0.0.1:8080/coffees 
+Content-Type: application/json;
+
+{
+  "id": "9999",
+  "name": "말차라떼"
+}
+
+###
+
+GET http://127.0.0.1:8080/coffees/9999
+
+###
+
+PUT http://127.0.0.1:8080/coffees/9999
+Content-Type: application/json;
+
+{
+    "id": "9999",
+    "name": "gd녹차라떼"
+}
+
+###
+
+DELETE http://127.0.0.1:8080/coffees/9999
