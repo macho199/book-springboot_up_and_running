@@ -1,16 +1,9 @@
-package com.thehecklers.sburredis;
+package com.example.planefinder.models;
 
 import java.time.Instant;
 
-import org.springframework.data.annotation.Id;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -38,5 +31,10 @@ public class Aircraft {
     private boolean isADSB;
     @JsonProperty("is_on_ground")
     private boolean isOnGround;
-    
+    @JsonProperty("last_seen_time")
+    private Instant lastSeenTime;
+    @JsonProperty("pos_update_time")
+    private Instant posUpdateTime;
+    @JsonProperty("bds40_seen_time")
+    private Instant bds40SeenTime;
 }
