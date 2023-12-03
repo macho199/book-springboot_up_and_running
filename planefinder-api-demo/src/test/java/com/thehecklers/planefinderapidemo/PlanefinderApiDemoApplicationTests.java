@@ -1,10 +1,10 @@
-package com.example.planefinder;
+package com.thehecklers.planefinderapidemo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PlanefinderApplicationTests {
+class PlanefinderApiDemoApplicationTests {
 
 	@Test
 	void contextLoads() {

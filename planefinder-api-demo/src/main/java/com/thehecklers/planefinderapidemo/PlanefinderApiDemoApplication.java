@@ -1,13 +1,13 @@
-package com.example.planefinder;
+package com.thehecklers.planefinderapidemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PlanefinderApplication {
+public class PlanefinderApiDemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PlanefinderApplication.class, args);
+		SpringApplication.run(PlanefinderApiDemoApplication.class, args);
 	}
 
 }
