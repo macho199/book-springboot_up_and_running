@@ -14,17 +14,17 @@ import com.thehecklers.sburredis.Aircraft;
 
 @SpringBootApplication
 public class PlanefinderApiDemoApplication {
-	@Bean
-	public RedisOperations<String, Aircraft> redisOperations(RedisConnectionFactory factory) {
-		Jackson2JsonRedisSerializer<Aircraft> serializer = new Jackson2JsonRedisSerializer<>(Aircraft.class);
+	// @Bean
+	// public RedisOperations<String, Aircraft> redisOperations(RedisConnectionFactory factory) {
+	// 	Jackson2JsonRedisSerializer<Aircraft> serializer = new Jackson2JsonRedisSerializer<>(Aircraft.class);
 
-		RedisTemplate<String, Aircraft> template = new RedisTemplate<>();
-		template.setConnectionFactory(factory);
-		template.setDefaultSerializer(serializer);
-		template.setKeySerializer(new StringRedisSerializer());
+	// 	RedisTemplate<String, Aircraft> template = new RedisTemplate<>();
+	// 	template.setConnectionFactory(factory);
+	// 	template.setDefaultSerializer(serializer);
+	// 	template.setKeySerializer(new StringRedisSerializer());
 
-		return template;
-	}
+	// 	return template;
+	// }
 
 	public static void main(String[] args) {
 		SpringApplication.run(PlanefinderApiDemoApplication.class, args);
