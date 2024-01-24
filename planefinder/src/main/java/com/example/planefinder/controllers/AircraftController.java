@@ -22,7 +22,13 @@ public class AircraftController {
         aircraft.setReg("reg");
         aircraft.setFlightno("flightno");
         aircraft.setRoute("route");
+        aircraft.setType("type");
         aircraft.setCategory("category");
+        aircraft.setAltitude(10);
+        aircraft.setHeading(20);
+        aircraft.setSpeed(40);
+        aircraft.setVertRate(66);
+
 
         aircraft.setLastSeenTime(Instant.ofEpochSecond(0));
         aircraft.setPosUpdateTime(Instant.ofEpochSecond(0));
