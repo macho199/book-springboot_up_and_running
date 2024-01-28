@@ -1,5 +1,7 @@
 package kr.co.jobkorea.aircraftpositions.controller;
 
+import java.util.List;
+
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,12 +23,16 @@ public class PositionController {
     public String getCurrentAircraftPositions(Model model) {
         repository.deleteAll();
 
-        client.get()
-            .retrieve()
-            .bodyToFlux(Aircraft.class)
-            .filter(plane -> !plane.getReg().isEmpty())
-            .toStream()
-            .forEach(repository::save);
+        try {
+            client.get()
+                .retrieve()
+                .bodyToFlux(Aircraft.class)
+                .filter(plane -> !plane.getReg().isEmpty())
+                .toStream()
+                .forEach(repository::save);
+        } catch (Exception e) {
+
+        }
 
         model.addAttribute("currentPositions", repository.findAll());
         return "positions";
