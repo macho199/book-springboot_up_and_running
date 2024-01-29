@@ -1,0 +1,2 @@
+INSERT INTO aircraft (callsign,	squawk, reg, flightno, route,	type,	category, altitude, heading, speed,	vert_rate, selected_altitude,	lat, lon, barometer,	polar_distance, polar_bearing, is_adsb, is_on_ground,	last_seen_time, pos_update_time,	bds40_seen_time)
+VALUES('callsign', 'squawk', 'reg', 'flightno', 'route',	'type',	'category', 1, 1, 1,	1, 1,	1, 1, 1,	1, 1, TRUE, true,	NOW(), NOW(),	NOW());
