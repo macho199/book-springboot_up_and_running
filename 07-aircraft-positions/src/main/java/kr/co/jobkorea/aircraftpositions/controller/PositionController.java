@@ -17,23 +17,9 @@ import lombok.RequiredArgsConstructor;
 public class PositionController {
     @NonNull
     private final AircraftRepository repository;
-    private WebClient client = WebClient.create("http://localhost:7634/aircraft");
 
     @GetMapping("/aircraft")
     public String getCurrentAircraftPositions(Model model) {
-        repository.deleteAll();
-
-        try {
-            client.get()
-                .retrieve()
-                .bodyToFlux(Aircraft.class)
-                .filter(plane -> !plane.getReg().isEmpty())
-                .toStream()
-                .forEach(repository::save);
-        } catch (Exception e) {
-
-        }
-
         model.addAttribute("currentPositions", repository.findAll());
         return "positions";
     }
