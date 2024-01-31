@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -24,30 +25,33 @@ public class PlaneFinderService {
         this.repo = repo;
         this.generator = generator;
 
-        acURL = new URL("http://192.168.1.139/ajax/aircraft");
+        // acURL = new URL("http://192.168.1.139/ajax/aircraft");
         om = new ObjectMapper();
     }
 
     public Iterable<Aircraft> getAircraft() throws IOException {
         List<Aircraft> positions = new ArrayList<>();
 
-        JsonNode aircraftNodes = null;
-        try {
-            aircraftNodes = om.readTree(acURL)
-                    .get("aircraft");
+        // JsonNode aircraftNodes = null;
+        // try {
+        //     aircraftNodes = om.readTree(acURL)
+        //             .get("aircraft");
 
-            aircraftNodes.iterator().forEachRemaining(node -> {
-                try {
-                    positions.add(om.treeToValue(node, Aircraft.class));
-                } catch (JsonProcessingException e) {
-                    e.printStackTrace();
-                }
-            });
-        } catch (IOException e) {
-            System.out.println("\n>>> IO Exception: " + e.getLocalizedMessage() +
-                    ", generating and providing sample data.\n");
-            return saveSamplePositions();
-        }
+        //     aircraftNodes.iterator().forEachRemaining(node -> {
+        //         try {
+        //             positions.add(om.treeToValue(node, Aircraft.class));
+        //         } catch (JsonProcessingException e) {
+        //             e.printStackTrace();
+        //         }
+        //     });
+            int idx = (int)(Math.random() * 1000);
+            // positions.add(new Aircraft(Long.valueOf(idx), "callsign" + idx, "squawk" + idx, "reg" + idx, "flightno" + idx, "route" + idx, "type" + idx, "category" + idx, idx, idx, idx, idx, Double.valueOf(idx), Double.valueOf(idx), Double.valueOf(idx), Double.valueOf(idx), Double.valueOf(idx), Double.valueOf(idx), true, true, Instant.now(), Instant.now(), Instant.now());
+            positions.add(Aircraft.builder().callsign("callsign" + idx).squawk("squawk" + idx).reg("reg" + idx).flightno("flightno" + idx).route("route" + idx).type("type" + idx).category("category" + idx).altitude(idx).heading(idx).speed(idx).vertRate(idx).selectedAltitude(idx).lat(Double.valueOf(idx)).lon(Double.valueOf(idx)).barometer(Double.valueOf(idx)).polarDistance(Double.valueOf(idx)).polarBearing(Double.valueOf(idx)).isADSB(true).isOnGround(true).lastSeenTime(Instant.now()).posUpdateTime(Instant.now()).bds40SeenTime(Instant.now()).build());
+        // } catch (IOException e) {
+        //     System.out.println("\n>>> IO Exception: " + e.getLocalizedMessage() +
+        //             ", generating and providing sample data.\n");
+        //     return saveSamplePositions();
+        // }
 
         if (positions.size() > 0) {
             positions.forEach(System.out::println);
